@@ -35,9 +35,12 @@ This README is a concise, practical guide to using the Command-Line Interface (C
 - Use the **Console Port** for first-time device configuration.
 - Typical cables:
   - **Rollover cable** (RJ45) to DB9 serial connector
+    
+    <img width="811" height="813" alt="image" src="https://github.com/user-attachments/assets/84e1c8ef-86c5-4824-83e9-3f580753dde1" />
+
   - **DB9 serial to USB** adapter (if your computer lacks a DB9 serial port)
 
-(If you have device images or photos, place them here or link to them.)
+    <img width="680" height="449" alt="image" src="https://github.com/user-attachments/assets/ea221481-8132-4aee-9be2-4f38e8423af7" />
 
 
 ## Accessing the CLI — Terminal Emulator
