@@ -15,6 +15,9 @@ A **conceptual model** that categorizes and standardizes the different functions
 - Divides networking functions into **7 layers**
 - Each layer performs specific tasks and communicates with the layers directly above and below it.
 
+<img width="566" height="463" alt="Screenshot 2025-10-24 092819" src="https://github.com/user-attachments/assets/e361a37b-4ee8-4b4c-a58e-fa8394ac1601" />
+
+
 ---
 
 ### 🔽 Data Flow Processes
@@ -122,6 +125,12 @@ A **conceptual model** that categorizes and standardizes the different functions
 
 **Devices:** Cables, hubs, NICs, repeaters
 
+<img width="826" height="600" alt="image" src="https://github.com/user-attachments/assets/f31297ad-9359-4c32-b523-bd5f73f58b9e" />
+
+<img width="835" height="521" alt="image" src="https://github.com/user-attachments/assets/76e73213-0cc9-40cf-ae62-a7bd5776f8e3" />
+
+
+
 ---
 
 ## 🧮 OSI Model – Protocol Data Units (PDUs)
@@ -143,7 +152,7 @@ A **conceptual model** that categorizes and standardizes the different functions
 ## 🖧 Visual Diagram – OSI Encapsulation Flow
 
 ┌───────────────────────────────────────────────┐
-│ Layer 7 – Application │ ← User interacts here │
+│ Layer 7 – Application │ ← User interacts here         │
 ├───────────────────────────────────────────────┤
 │ Layer 6 – Presentation │ Data formatting / encryption │
 ├───────────────────────────────────────────────┤
@@ -170,6 +179,9 @@ A **conceptual model** and **set of communication protocols** used across the In
 - Developed by the **U.S. Department of Defense (DARPA)**
 - Similar to the OSI model but with **fewer layers**
 
+  <img width="774" height="505" alt="image" src="https://github.com/user-attachments/assets/79ed95f9-96ff-4f75-a934-dddf3f8ee80b" />
+
+
 > 🧠 **Note:**  
 > OSI is theoretical — TCP/IP is the **model in practical use** today.  
 > However, OSI still influences how engineers **think and communicate** about networking.
@@ -192,6 +204,9 @@ A **conceptual model** and **set of communication protocols** used across the In
 ### Adjacent-Layer Interactions
 Communication between **different layers** on the **same host**.
 
+<img width="1036" height="492" alt="image" src="https://github.com/user-attachments/assets/d1b2e8f1-b336-4631-a0d5-111b31277290" />
+
+
 **Example:**
 Layers 5–7 → send data → Layer 4
 Layer 4 adds header → creates SEGMENT
@@ -203,18 +218,6 @@ Communication between the **same layer** on **different hosts**.
 **Example:**
 Application layer of YouTube’s server ↔ Application layer of your web browser
 
-
----
-
-## 🖼️ Image Placeholders (optional visuals)
-Add these for enhanced visual learning:
-
-- OSI Model Diagram → `![OSI Model](images/osi-model.png)`  
-- Encapsulation Process → `![Encapsulation](images/encapsulation.png)`  
-- TCP/IP Model → `![TCP-IP Model](images/tcpip-model.png)`  
-- Layer Interaction Example → `![Layer Interaction](images/layer-interaction.png)`
-
----
 
 📘 **Summary:**
 - The **OSI Model** helps conceptualize how data travels across a network.  
