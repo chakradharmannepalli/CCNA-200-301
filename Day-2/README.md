@@ -78,11 +78,17 @@ Used to connect **different** device types:
 - Router ↔ Switch  
 - Firewall ↔ Switch  
 
+<img width="1134" height="634" alt="image" src="https://github.com/user-attachments/assets/4b57ceae-32a7-44bf-958a-d651403d14a2" />
+
+<img width="1135" height="632" alt="image" src="https://github.com/user-attachments/assets/5c2542b7-bcf6-49cc-8629-e6d6bfde3666" />
+
 ### 🔸 Crossover Cable
 Used to connect **similar** device types:
 - Switch ↔ Switch  
 - Router ↔ Router  
 - PC ↔ PC  
+
+<img width="1136" height="630" alt="image" src="https://github.com/user-attachments/assets/3f5c70ca-c8be-4dc2-9c2c-3c5be41a5026" />
 
 **Pin Mapping:**
   - PIN 1 → PIN 3
@@ -106,6 +112,8 @@ Used to connect **similar** device types:
 - **1000BASE-T** and **10GBASE-T** use **4 pairs (8 wires)**.  
 - Each wire pair is **bidirectional**, allowing simultaneous transmit and receive operations for higher speeds.
 
+<img width="1140" height="635" alt="image" src="https://github.com/user-attachments/assets/dfd95a9b-0e08-4ef3-b5f7-803ffa316695" />
+
 ---
 
 ## 💡 Fiber-Optic Connections
@@ -113,6 +121,8 @@ Used to connect **similar** device types:
 Defined in the **IEEE 802.3ae** standard.  
 Use **SFP (Small Form-Factor Pluggable) transceivers** to connect fiber cables to switches/routers.  
 Fiber connections have **separate transmit (TX)** and **receive (RX)** cables.
+
+<img width="1129" height="635" alt="image" src="https://github.com/user-attachments/assets/4f4c0832-88d4-46ec-bfb2-1a65d49285fe" />
 
 ---
 
@@ -123,12 +133,16 @@ Fiber connections have **separate transmit (TX)** and **receive (RX)** cables.
 - Uses **laser-based transmitters**.  
 - Supports **longer distances** than multimode or UTP.  
 - **More expensive** due to laser-based SFPs.
+  
+<img width="1134" height="264" alt="image" src="https://github.com/user-attachments/assets/9c1d4c2c-5219-44e2-a61b-e438aa1a1c37" />
 
 ### 🟣 Multi-Mode Fiber (MMF)
 - **Wider core** (multiple light angles or modes).  
 - Uses **LED-based transmitters**.  
 - Supports **shorter distances** than single-mode but longer than UTP.  
 - **Cheaper** than single-mode fiber.
+  
+<img width="1132" height="550" alt="image" src="https://github.com/user-attachments/assets/9b2a75e3-fd99-4463-88df-86f87607b9d6" />
 
 ---
 
