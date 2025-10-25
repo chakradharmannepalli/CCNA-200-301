@@ -17,8 +17,6 @@
    - [Useful Cisco IOS Commands](#-useful-cisco-ios-commands)
    - [Interface Naming](#-interface-naming)
    - [Summary](#-summary)
-3. [References](#-references)
-
 ## 📘 Part 1
 ### 🌐 What is a LAN?
 - A **LAN (Local Area Network)** is a network contained within a relatively small area.
