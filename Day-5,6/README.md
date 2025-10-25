@@ -20,10 +20,16 @@
 ## 📘 Part 1
 ### 🌐 What is a LAN?
 - A **LAN (Local Area Network)** is a network contained within a relatively small area.
+  <img width="1137" height="591" alt="image" src="https://github.com/user-attachments/assets/28c41997-cb17-4e8b-8ac1-93506427c8fe" />
+  <img width="1139" height="591" alt="image" src="https://github.com/user-attachments/assets/8eada14d-204e-4ac8-b076-aba8824692de" />
+
+
 - **Routers** are used to connect separate LANs.
 
 ### 🧱 Ethernet Frame Structure
 Ethernet frame = Header + Data (Packet) + Trailer
+
+<img width="1136" height="606" alt="image" src="https://github.com/user-attachments/assets/47f911a2-c6e2-4ccb-9096-1a57b3b424d0" />
 
 ### ⚙️ Ethernet Header Fields
 | **Field** | **Length** | **Description** |
@@ -42,6 +48,8 @@ Ethernet frame = Header + Data (Packet) + Trailer
 | **Structure** | First 3 bytes = OUI, last 3 bytes = Device ID |
 | **Uniqueness** | Globally unique |
 | **Type** | Burned-In Address (BIA) |
+
+<img width="1131" height="728" alt="image" src="https://github.com/user-attachments/assets/bb4d3f6e-47b9-451f-85bf-792c3a10e304" />
 
 ### 📦 Type / Length Field
 | **Value Range** | **Meaning** | **Examples** |
@@ -64,11 +72,17 @@ Ethernet frame = Header + Data (Packet) + Trailer
 | FCS | 4 bytes | CRC check |
 | Total Frame Size | 64–1518 bytes | Minimum–Maximum Ethernet frame size |
 
+<img width="1132" height="727" alt="image" src="https://github.com/user-attachments/assets/76e9e626-d359-4f9a-9a5f-5d4f5d83a6aa" />
+
 ### 🗂️ MAC Address Table (Switch Logic)
 - Switches dynamically learn MAC addresses from source address of incoming frames.
 - **Forwarding:** If destination MAC known → send to specific port.
 - **Flooding:** If unknown → send to all ports except source.
 - **Aging:** Dynamic MAC removed after 5 mins inactivity.
+
+ <img width="1134" height="673" alt="image" src="https://github.com/user-attachments/assets/92cc9755-e25e-4494-b377-623c08c1deda" />
+ <img width="1133" height="642" alt="image" src="https://github.com/user-attachments/assets/0a028883-45a1-4925-9ad3-5c55a5913210" />
+
 
 ## 📘 Part 2
 ### 🧱 Ethernet Frame Recap
@@ -77,11 +91,29 @@ Ethernet frame = Header + Data (Packet) + Trailer
 - Trailer: 4 bytes (FCS)
 - Minimum frame size: 64 bytes
 - Padding added if data < 46 bytes
+<img width="1134" height="319" alt="image" src="https://github.com/user-attachments/assets/6f48eea8-98ad-4c1e-bea1-83c49f942819" />
+### Header + Trailer Size
+
+- **Header + Trailer** = 18 bytes  
+  - 6 bytes (Destination) + 6 bytes (Source) + 2 bytes (Type/Length) + 4 bytes (FCS)
+
+### Minimum Ethernet Frame Size
+
+- Minimum Ethernet frame = 64 bytes (Header + Payload + Trailer)  
+- Minimum data payload (packet) size:
+        - 64 bytes (min frame) - 18 bytes (header + trailer) = 46 bytes
+  > If the payload is **less than 46 bytes**, padding bytes (series of 0s) are added until it reaches 46 bytes.
+
 
 ### 🌐 ARP (Address Resolution Protocol)
 - Used to find MAC address of a known IP
 - ARP Request: Broadcast (FF:FF:FF:FF:FF:FF)
 - ARP Reply: Unicast to requester
+
+<img width="1134" height="636" alt="image" src="https://github.com/user-attachments/assets/be15a2d4-ebb2-4606-9734-bda8cb338a0c" />
+<img width="1135" height="637" alt="image" src="https://github.com/user-attachments/assets/88d387d7-676c-421e-9bb7-47112b8c514f" />
+<img width="1128" height="593" alt="image" src="https://github.com/user-attachments/assets/e9cd7795-3569-472c-84f5-1b7838e440f4" />
+
 
 ### 📶 PING (ICMP Echo)
 - Tests connectivity and measures round-trip time
@@ -94,6 +126,7 @@ Ethernet frame = Header + Data (Packet) + Trailer
 | show arp | Show ARP table |
 | show mac address-table | Show switch MAC table |
 | clear mac address-table dynamic | Clear all dynamic MAC entries |
+| clear mac address-table dynamic address <mac-address | Clear MACs for a specific MAC address |
 | clear mac address-table dynamic interface <iface> | Clear MACs for a specific interface |
 
 ### 🧾 Interface Naming
@@ -109,4 +142,3 @@ Ethernet frame = Header + Data (Packet) + Trailer
 - ARP: Resolves IP → MAC
 - Ping: Test connectivity
 - MAC Table: Dynamic learning, 5 min aging
-"""
