@@ -209,6 +209,7 @@ Layer 4 adds header → creates SEGMENT
 
 ### Same-Layer Interactions
 Communication between the **same layer** on **different hosts**.
+<img width="960" height="640" alt="image" src="https://github.com/user-attachments/assets/df0170c2-f2fe-44a5-a4c5-12698232a2a7" />
 
 **Example:**
 Application layer of YouTube’s server ↔ Application layer of your web browser
