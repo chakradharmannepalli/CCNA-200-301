@@ -1,4 +1,4 @@
-# IPv4 Addressing: A Friendly Guide (Part 1)
+# IPv4 Addressing (Part 1)
 
 Hey! Welcome back to the world of networking. If you're prepping for CCNA or just curious about how the internet knows where to send your cat videos, this is your spot. We'll unpack **IPv4 addressing** at the **OSI Network Layer (Layer 3)**—the "traffic cop" that connects distant networks. I'll keep it conversational, with simple examples, bite-sized math, and visuals described (since those diagrams are gold). No jargon overload; think of this as notes from a chill study session.
 
@@ -142,3 +142,123 @@ Usable: `.1` to `.254` (256 total - 2 specials).
 Grab a coffee and try: Convert `10101010.00001111.11000000.00110011` to decimal IP. (/16? Class B net.) Or sketch your home router setup.
 
 This sets the stage—next: Subnetting deep dive. Questions? Hit me up. You've got the basics; now own the net! 🌐
+
+# IPv4 Addressing (Part 2)
+
+Hey again! If Part 1 got you hooked on how IPs organize the networking neighborhood (routers splitting streets, classes like family trees), welcome to **Part 2**. We're zooming in on the nitty-gritty: How many devices can crash a single network party? What's the "first and last seat" for hosts? And how do you actually *set this up* on a Cisco router using CLI commands—like giving your gear a street address and turning on the lights.
+
+Think of this as upgrading from a house sketch to wiring the lights. We'll keep it breezy with examples, a handy formula, and step-by-step CLI walkthroughs (no copy-paste needed—just understand the flow). By the end, you'll confidently config a router interface.
+
+Ready? Let's subnet like pros. (P.S. If you missed Part 1, hop back for the basics!)
+
+## Party Size: Max Hosts Per Network
+
+Every network has a "guest list limit"—determined by how many bits are left for **hosts** (after the network portion claims its share). More host bits = bigger bash. But subtract 2 seats: One for the network ID (the "venue address") and one for broadcast (the "last call" shout).
+
+**The Magic Formula**:  
+**Max Hosts = 2<sup>N</sup> - 2**  
+*(N = number of host bits. Easy calc: Double the previous power of 2, minus 2.)*
+
+Here's the breakdown by class (defaults from Part 1):
+
+| Class | Default Prefix | Host Bits (N) | Total Addresses | Max Usable Hosts | Real-World Vibe |
+|-------|----------------|---------------|-----------------|------------------|-----------------|
+| **A** | /8            | 24            | 16,777,216     | 16,777,214      | Mega-corp HQ (think Google's campus—millions of devices? No sweat.) |
+| **B** | /16           | 16            | 65,536         | 65,534          | University network (enough for every student, prof, and coffee machine). |
+| **C** | /24           | 8             | 256            | 254             | Home office or small team (your Wi-Fi + smart fridge = cozy). |
+
+**Quick Examples**:
+- **Class C** (`192.168.1.0/24`): Full range `.0` to `.255` (256 spots). Minus network (`.0`) and broadcast (`.255`) → **254 hosts**. Perfect for a family router.
+- **Class B** (`172.16.0.0/16`): Ranges from `172.16.0.0` to `172.16.255.255` → **65,534 hosts**. (2^16 = 65,536 - 2.)
+- **Class A** (`10.0.0.0/8`): `10.0.0.0` to `10.255.255.255` → **16,777,214 hosts**. (2^24 is huge—ISPs love this.)
+
+**Pro Tip**: In real life, we subnet (slice these further) to avoid wasting space. But for now? This is the raw capacity.
+
+*(Visual: A fun bar graph—Class A as a skyscraper, B as a mid-rise, C as a bungalow. Labels: "2^N Total" and "-2 for Specials = Usable Hosts." Side note: "Why -2? Network ID can't be a host; broadcast is for group yells!")*
+
+## VIP Seats: First and Last Usable Addresses
+
+Hosts get the comfy middle chairs—*not* the ends. First usable? Network ID +1. Last? Broadcast -1. (All in binary: Flip the host bits from all-0s or all-1s.)
+
+**Class C** (`192.168.1.0/24`):
+- Network: `192.168.1.0` (host bits: `00000000` → Reserved).
+- **First Usable**: `192.168.1.1` (host: `00000001`).
+- Broadcast: `192.168.1.255` (host: `11111111` → Reserved).
+- **Last Usable**: `192.168.1.254` (host: `11111110`).
+
+**Class B** (`172.16.0.0/16`):
+- Network: `172.16.0.0` (host bits: `00000000 00000000`).
+- **First**: `172.16.0.1` (host: `00000000 00000001`).
+- Broadcast: `172.16.255.255` (host: `11111111 11111111`).
+- **Last**: `172.16.255.254` (host: `11111111 11111110`).
+
+**Class A** (`10.0.0.0/8`):
+- Network: `10.0.0.0` (host: `00000000 00000000 00000000`).
+- **First**: `10.0.0.1` (host: `00000000 00000000 00000001`).
+- Broadcast: `10.255.255.255` (host: `11111111 11111111 11111111`).
+- **Last**: `10.255.255.254` (host: `11111111 11111111 11111110`).
+
+**Hack**: To find these fast, just bump/decrement the last octet (or relevant ones) by 1. No binary needed unless subnetting gets wild.
+
+*(Visual: Side-by-side timelines for each class. Dots for addresses: Red X on network/broadcast, green checks on first/last. Arrows: "+1 from Net" and "-1 from Broadcast." Example binary snippets under each.)*
+
+## Hands-On: Configuring Cisco Devices with CLI
+
+Theory's cool, but nothing beats typing commands. Cisco's CLI (Command Line Interface) is like the router's brain—text-based, efficient, and a CCNA must. We'll config a router interface (e.g., G0/0) with an IP, mask, and bring it online.
+
+**Start Here**: Assume you're on a Cisco router (R1). Boot up in User EXEC mode (`R1>`).
+
+### Quick Recon: `show ip interface brief`
+- **What it shows**: A snapshot table—interfaces, IPs, assignment method (manual/DHCP?), **Status** (Layer 1: physical link), **Protocol** (Layer 2: logical up?).
+- **Key Decodes**:
+  - **Status**: `up` (good) or `administratively down` (shut off via command—*default for router ports*). Switch ports? Up by default.
+  - **Protocol**: `up` if Layer 2 is chatting; down if physical (Status) fails.
+- Example Output:
+  | Interface            | IP-Address  | OK? | Method | Status                  | Protocol |
+|----------------------|-------------|-----|---------|--------------------------|-----------|
+| GigabitEthernet0/0   | unassigned  | YES | unset  | administratively down    | down      |
+| GigabitEthernet0/1   | unassigned  | YES | unset  | administratively down    | down      |
+
+*(Visual: Clean table screenshot. Highlights: "Admin down? Wake it with 'no shutdown'!" Red for down, green for up. Notes: "Routers start sleepy—switches don't.")*
+
+### Config Mode: Assign IP and Wake It Up
+Enter **Global Config** mode, then drill to the interface. Shortcuts like `g0/0` save time.
+```
+R1# conf t          // Global config mode (short: configure terminal)
+R1(config)# interface g0/0  // Target the port (GigabitEthernet0/0)
+R1(config-if)# ip address 10.255.255.254 255.0.0.0  // IP + mask (Class A example—last usable!)
+R1(config-if)# no shutdown  // Flip the switch: Up!
+```
+
+- **Output Magic**: You'll see `%LINK-3-UPDOWN: Interface GigabitEthernet0/0... changed state to up` (Status). Then `%LINEPROTO-5-UPDOWN: Line protocol on Interface... changed state to up` (Protocol). Boom—online!
+  <img width="1125" height="295" alt="image" src="https://github.com/user-attachments/assets/6673a77c-f29d-48d5-8a05-2119aad6d1f5" />
+
+
+**Verify**: From config mode, sneak a peek:
+```
+R1(config-if)# do show ip interface brief  // 'do' runs EXEC commands without exiting
+```
+(Now your table shows the IP, Status/Protocol: up/up. High five!)
+<img width="1139" height="536" alt="image" src="https://github.com/user-attachments/assets/0bc9b06e-acf3-4a10-93ae-182d5dd10009" />
+
+
+### Pro Tips & More Show Commands
+- **Descriptions**: Label ports for sanity (e.g., "To the wild internet?").
+  ```
+    R1(config)# interface g0/0
+    R1(config-if)# description ## Upstream to ISP ##
+  ```
+- Check: `show interfaces description` → Adds a "Description" column: `Gi0/0 | ## Upstream to ISP ##`.
+
+- **Deeper Dives**:
+- `show interfaces g0/0`: Full stats—MAC (hardware ID), IP, errors, speed/duplex. (Layer 1-3 intel.)
+- `show running-config interface g0/0`: Your current setup (saved changes?).
+
+*(Visual: CLI transcript screenshot—step-by-step commands with green success messages. Another: `show interfaces description` table: Interface | IP | Description | Status | Protocol. Example row: Gi0/0 | 10.255.255.254 | ## To SW1 ## | up | up.)*
+<img width="833" height="796" alt="image" src="https://github.com/user-attachments/assets/d287918e-66cb-41fc-b2fe-fb19c5f3d8d8" />
+
+**Safety Note**: `shutdown` to pause an interface (reverse of `no shutdown`). Always save with `wr` (write memory) to persist.
+
+## Level Up: Your Turn!
+
+Fire up Packet Tracer (free Cisco sim) and try: Config R1's G0/0 with `192.168.1.1/24`, no shutdown, then ping a fake host at `.2`. Spot the first/last usable? Calc hosts for /16.
