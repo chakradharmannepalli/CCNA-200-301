@@ -214,6 +214,7 @@ Theory's cool, but nothing beats typing commands. Cisco's CLI (Command Line Inte
   - **Status**: `up` (good) or `administratively down` (shut off via command—*default for router ports*). Switch ports? Up by default.
   - **Protocol**: `up` if Layer 2 is chatting; down if physical (Status) fails.
 - Example Output:
+  
   | Interface            | IP-Address  | OK? | Method | Status                  | Protocol |
 |----------------------|-------------|-----|---------|--------------------------|-----------|
 | GigabitEthernet0/0   | unassigned  | YES | unset  | administratively down    | down      |
@@ -255,6 +256,7 @@ R1(config-if)# do show ip interface brief  // 'do' runs EXEC commands without ex
 - `show running-config interface g0/0`: Your current setup (saved changes?).
 
 *(Visual: CLI transcript screenshot—step-by-step commands with green success messages. Another: `show interfaces description` table: Interface | IP | Description | Status | Protocol. Example row: Gi0/0 | 10.255.255.254 | ## To SW1 ## | up | up.)*
+
 <img width="833" height="796" alt="image" src="https://github.com/user-attachments/assets/d287918e-66cb-41fc-b2fe-fb19c5f3d8d8" />
 
 **Safety Note**: `shutdown` to pause an interface (reverse of `no shutdown`). Always save with `wr` (write memory) to persist.
