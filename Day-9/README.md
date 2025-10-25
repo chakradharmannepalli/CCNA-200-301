@@ -176,6 +176,7 @@ SW1(config)# interface FastEthernet0/1
 SW1(config-if)# speed 100
 SW1(config-if)# duplex full
 ```
+  <img width="1134" height="618" alt="image" src="https://github.com/user-attachments/assets/28c17887-1808-43d3-b4ae-825af010ee29" />
 
 ------------------------------------------------------------------------
 
@@ -276,20 +277,7 @@ do show interfaces status   # run show from config mode
 
 ------------------------------------------------------------------------
 
-## 10) Images / diagrams (optional)
-
-If you want to add images to your README on GitHub, place them in your
-repo (e.g., `images/`) and reference them like:
-
-``` md
-![Interface states diagram](images/layer-interaction.png)
-```
-
-Replace the filename with your actual image file.
-
-------------------------------------------------------------------------
-
-## 11) Example outputs from a lab switch
+## 10) Example outputs from a lab switch
 
 These are realistic outputs captured from a Cisco Catalyst-style switch
 in a lab environment.\
