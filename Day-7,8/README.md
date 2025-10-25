@@ -15,8 +15,11 @@ Picture your home network as a backyard BBQ (your **LAN**—Local Area Network).
   - **Routers** rule here: They inspect IPs and forward packets like a GPS on steroids.
 
 **Routing in Action**: Without a router, all your devices share one big network (e.g., `192.168.1.0/24`). Add a router between two switches? *Split city*. Now you've got two networks: `192.168.1.0/24` and `192.168.2.0/24`. It's like dividing the BBQ into two patios—still connected via the router's "door."
+<img width="1133" height="387" alt="image" src="https://github.com/user-attachments/assets/2f8316ac-f658-4f9a-99cf-26784c27b8fd" />
+
 
 *(Visual: Imagine a diagram with PCs (PC1-PC4) plugged into two switches (SW1, SW2), linked by a router (R1). Left side: Network `192.168.1.0/24` with PCs at .1 and .2. Right: `192.168.2.0/24` with .1 and .2. Router interfaces glow: G0/0 at `192.168.1.254/24`, G0/1 at `192.168.2.254/24`. Arrows show traffic flow.)*
+<img width="1140" height="380" alt="image" src="https://github.com/user-attachments/assets/088559c1-0828-41bb-9681-6126af4220ed" />
 
 Routers play both sides: Each interface gets an IP matching its attached LAN. Why `.254`? It's the "last house on the block"—easy default gateway for hosts to find the exit.
 
@@ -32,6 +35,7 @@ IPv4 is the OG Layer 3 protocol—still powering most nets today. Addresses are 
 **The Header** (packet's "envelope"):
 - More fields than Ethernet (Layer 2): Version (4), TTL (hop limit), Protocol (next layer, e.g., TCP=6).
 - Stars: **Source IP** and **Destination IP** (32 bits each).
+<img width="1137" height="459" alt="image" src="https://github.com/user-attachments/assets/a037cf37-173a-4707-9f72-92c9068af931" />
 
 *(Visual: A detailed table of the IPv4 header. Rows for octets 0-5 (up to 60 bytes total). Columns: Bit positions 0-31. Highlights: Version/IHL (bits 0-7), Total Length (16-23), Source IP (96-127), Destination IP (128-159). Options pad if needed. Clean grid with labels like "Time to Live" at octet 8.)*
 
@@ -41,6 +45,8 @@ Quick refresher—networks love these for conversions.
 
 - **Decimal (Base 10)**: Everyday math. 3294 = 3×1000 + 2×100 + 9×10 + 4×1.
 - **Hex (Base 16)**: Compact for big numbers (A=10, B=11, ..., F=15). 3294 = CDE (C×256=3072 + D×16=208 + E=14).
+  <img width="1140" height="718" alt="image" src="https://github.com/user-attachments/assets/3da49da8-d982-442f-b4fa-abafc6a3cbd9" />
+
 
 *(Visual: Side-by-side. Left: Decimal breakdown of 3294. Right: Hex CDE with multipliers: C(12)×256=3072, D(13)×16=208, E(14)×1=14. Totals match.)*
 
@@ -73,6 +79,9 @@ For 221: Start high.
 
 - All on `192.168.1.x` share the network—hosts vary (.100, .105, .205).
 - Mask: `/24` = `255.255.255.0` (binary: 24 1s, 8 0s).
+<img width="1132" height="524" alt="image" src="https://github.com/user-attachments/assets/8fe58f28-7189-4161-8753-2fb05c18b95e" />
+
+<img width="1136" height="557" alt="image" src="https://github.com/user-attachments/assets/3fbabdcd-8d7f-42fe-9b55-4242bd48bbed" />
 
 *(Visual: Binary string `11000000.10101000.00000001.11111110` split into octets, arrows to decimal `192.168.1.254/24`. Orange highlights network bits.)*
 
@@ -95,6 +104,8 @@ Old-school way to divvy addresses by first octet (leading bits). Focus: A-C, but
 | **E** | 1111xxxx    | 240-255          | N/A           | N/A     | N/A          | Experimental/research (future-proofing or lab tests) |
 
 *Skip 0 (invalid); **127.x.x.x** = loopback (self-test, like `ping 127.0.0.1` checks your device's network stack—no wires needed).
+<img width="1131" height="347" alt="image" src="https://github.com/user-attachments/assets/96ea6c05-2bac-457b-b65c-62b1fa237958" />
+<img width="1120" height="615" alt="image" src="https://github.com/user-attachments/assets/966d4e06-4920-4d04-8a7c-5e35db92f527" />
 
 - **Class D Deep Dive**: No network/host split here—these are for **multicasting**. Think one-to-many broadcasts without flooding everyone (e.g., `224.0.0.1` for all hosts on a subnet, or `239.x.x.x` for private groups). Routers use IGMP to manage who joins. Saves bandwidth for streaming or updates—your Netflix binge might use these under the hood.
 - **Class E Deep Dive**: Reserved for R&D. Not routable on the public internet; they're like a sandbox for testing new protocols. If you're tinkering with wild ideas (e.g., quantum networking experiments), this is your range. No assignments, no drama.
@@ -107,13 +118,18 @@ Shorter prefix = bigger host pool (A: tiny net, huge party). Longer = cozy (C: m
 - A (/8): `255.0.0.0` → `11111111.00000000.00000000.00000000`
 - B (/16): `255.255.0.0` → `11111111.11111111.00000000.00000000`
 - C (/24): `255.255.255.0` → `11111111.11111111.11111111.00000000`
+  <img width="1138" height="635" alt="image" src="https://github.com/user-attachments/assets/78e0f020-6a26-4317-bea0-3dc25500bbe0" />
+
 
 *(Visual: Clean list with binary under each dotted mask.)*
 
 ## Special IPs: The Untouchables
 
 - **Network Address**: Host bits all 0s → Identifies the net (e.g., `192.168.1.0/24`). No host gets this—it's the "street sign."
+  <img width="1135" height="529" alt="image" src="https://github.com/user-attachments/assets/b4d26b93-b8b4-4bd6-8b5e-65e119f0a6a7" />
+
 - **Broadcast**: All 1s → "Hey team!" (e.g., `192.168.1.255`). MAC: `FF:FF:FF:FF:FF:FF`. Also off-limits.
+<img width="1136" height="507" alt="image" src="https://github.com/user-attachments/assets/68280a3f-280e-46b2-b94c-a9f3f3afc6a6" />
 
 Usable: `.1` to `.254` (256 total - 2 specials).
 
