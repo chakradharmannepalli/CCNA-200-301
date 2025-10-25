@@ -215,7 +215,7 @@ Theory's cool, but nothing beats typing commands. Cisco's CLI (Command Line Inte
   - **Protocol**: `up` if Layer 2 is chatting; down if physical (Status) fails.
 - Example Output:
   
-  | Interface            | IP-Address  | OK? | Method | Status                  | Protocol |
+| Interface            | IP-Address  | OK? | Method | Status                  | Protocol |
 |----------------------|-------------|-----|---------|--------------------------|-----------|
 | GigabitEthernet0/0   | unassigned  | YES | unset  | administratively down    | down      |
 | GigabitEthernet0/1   | unassigned  | YES | unset  | administratively down    | down      |
