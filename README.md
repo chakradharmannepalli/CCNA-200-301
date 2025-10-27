@@ -12,6 +12,8 @@ Your all-in-one open-source repository to help you **study, practice, and pass**
 
 This repository aggregates free and community-driven resources inspired by:
 
+**Note:** I have learned from all of these resources but I mostly followed Jermey's IT Lab and learned the course. So the labs and notes I have given mostly from Jermey's IT lab and prepared some on my own.
+
 - 🎥 **[Jeremy’s IT Lab](https://youtu.be/H8W9oMNSuwo?list=PLxbwE86jKRgMpuZuLBivzlM8s2Dk5lXBQ)** – Complete *free* CCNA video course
 - 🧪 **[David Bombal](https://youtu.be/tj3yCZWOWYc?list=PLw6kwOJVj3MbMZ8B72ZgUryj8OSETC0ds)** – Labs, packet tracer files, and practical examples
 - 🎓 **[Cisco NetAcad](https://www.netacad.com/)** – Official Cisco Academy materials
