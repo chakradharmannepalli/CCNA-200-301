@@ -122,9 +122,19 @@ Routing tables include different types of routes, each with distinct purposes an
 - **Connected vs. Local**: Connected routes point to entire subnets (e.g., 192.168.1.0/24); Local routes are host-specific for the interface's IP (e.g., 192.168.1.1/32).
 - **Static vs. Connected/Local**: Statics require manual entry and have higher AD, so they are overridden by connected/local if overlapping.
 
+  <img width="1138" height="644" alt="image" src="https://github.com/user-attachments/assets/0a711f53-cce1-4b2f-864c-7d6688210817" />
+  <img width="1129" height="636" alt="image" src="https://github.com/user-attachments/assets/3dbf6acb-d7aa-4697-9cc9-31f3097e52f9" />
+  <img width="1133" height="644" alt="image" src="https://github.com/user-attachments/assets/a5a0ab85-aeb9-4354-afc8-a0e2659d58ff" />
+  <img width="1134" height="639" alt="image" src="https://github.com/user-attachments/assets/bcdf29d8-c3de-4896-ab56-20831ca07e0a" />
+  <img width="1134" height="649" alt="image" src="https://github.com/user-attachments/assets/440fe0e4-54a7-42bd-8c05-1efc325ff649" />
+
+
 ### Static Routing
 
 Static routes are manually added for simplicity in small/stable networks. They don't adapt to changes (e.g., link failures).
+
+  <img width="1132" height="645" alt="image" src="https://github.com/user-attachments/assets/4fe784d2-8d5e-470f-a86f-04b66827d555" />
+
 
 #### Configuration Examples
 Static routes can specify a **next-hop IP**, an **exit interface**, or both.
@@ -135,6 +145,9 @@ Example: Route to 192.168.2.0/24 via next-hop 10.0.0.2
   ```
     ip route 192.168.2.0 255.255.255.0 10.0.0.2
   ```
+
+  <img width="1134" height="641" alt="image" src="https://github.com/user-attachments/assets/b39a5f56-936e-4937-b72e-f7c8826f8311" />
+
 
 **Static Route with Exit Interface:** `ip route <destination_network> <subnet_mask> <exit_interface>`
 
