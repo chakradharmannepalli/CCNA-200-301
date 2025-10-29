@@ -79,12 +79,14 @@ Static routes are manually added for simplicity in small/stable networks. They d
 Static routes can specify a **next-hop IP** or an **exit interface**.
 
 **Basic Static Route (Next-Hop):** `ip route <destination_network> <subnet_mask> <next_hop_ip>`
+
 Example: Route to 192.168.2.0/24 via next-hop 10.0.0.2
   ```
     ip route 192.168.2.0 255.255.255.0 10.0.0.2
   ```
 
 **Static Route with Exit Interface:** `ip route <destination_network> <subnet_mask> <exit_interface>`
+
 Example: Route to 192.168.2.0/24 via GigabitEthernet0/1
   ```
     ip route 192.168.2.0 255.255.255.0 GigabitEthernet0/1
