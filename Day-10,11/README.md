@@ -22,6 +22,8 @@ The **Internet Protocol version 4 Header (IPv4 Header)** is used at **Layer 3** 
 
 The IPv4 Header **encapsulates** a TCP or UDP segment (Layer 4 PDU). It enables packet forwarding across routers.
 
+<img width="1135" height="584" alt="image" src="https://github.com/user-attachments/assets/9fa94c22-870c-456e-963b-dc082f84dd21" />
+
 **Key Review Points:**
 - Minimum Header Length: 20 bytes
 - Maximum Header Length: 60 bytes
@@ -29,6 +31,9 @@ The IPv4 Header **encapsulates** a TCP or UDP segment (Layer 4 PDU). It enables 
 
 ### Header Fields
 The IPv4 Header consists of fixed and variable fields. Below is a summary table of all fields:
+
+<img width="1132" height="353" alt="image" src="https://github.com/user-attachments/assets/a83ec406-79d4-4aaa-ae66-8e908f5af864" />
+
 
 | Field                  | # of Bits | Description |
 |------------------------|-----------|-------------|
@@ -56,9 +61,16 @@ The IPv4 Header consists of fixed and variable fields. Below is a summary table 
 ### What is Routing?
 **Routing** is the process routers use to determine the path IP packets take across networks to reach their destination.
 
+<img width="1136" height="590" alt="image" src="https://github.com/user-attachments/assets/3f125c27-b92d-48ef-9c05-922cbd2cbb9f" />
+
+
 - **Routers** maintain a **Routing Table** with known destinations.
 - Upon receiving a packet, the router consults the table to forward it via the best path.
 - **WAN (Wide Area Network)**: Networks spanning large geographic areas (e.g., internet connections between cities).
+
+  <img width="1131" height="245" alt="image" src="https://github.com/user-attachments/assets/d06d099a-4a2e-41e6-84e8-41df78ed07a8" />
+
+  <img width="1136" height="445" alt="image" src="https://github.com/user-attachments/assets/37ed821d-5a35-4339-8450-f05920268929" />
 
 **Routing Methods:**
 - **Dynamic Routing**: Routers automatically exchange info using protocols like OSPF to build tables.
@@ -80,11 +92,19 @@ To inspect the routing table on a Cisco router (or similar device), use the comm
     show ip route
   ```
 
+<img width="1140" height="466" alt="image" src="https://github.com/user-attachments/assets/51c1193d-8259-4d56-8cf4-99fa03eebeb7" />
+
+
 This displays all routes, including codes for route types (e.g., 'C' for connected, 'S' for static). Example output snippet:
   ```
     C    192.168.1.0/24 is directly connected, GigabitEthernet0/0
     S    10.0.0.0/24 [1/0] via 192.168.1.1
   ```
+
+<img width="1133" height="613" alt="image" src="https://github.com/user-attachments/assets/b335b138-39d5-4923-861f-3ac8fe803a71" />
+
+<img width="1136" height="642" alt="image" src="https://github.com/user-attachments/assets/a1ab0302-7fd4-40b3-9361-97fb3f0be659" />
+
 
 - Interpret codes: 'C' (Connected), 'S' (Static), 'L' (Local), etc.
 - Use `show ip route <network>` for specific routes.
