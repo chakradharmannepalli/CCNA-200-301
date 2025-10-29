@@ -148,6 +148,14 @@ Example: Route to 192.168.2.0/24 via next-hop 10.0.0.2
 
   <img width="1134" height="641" alt="image" src="https://github.com/user-attachments/assets/b39a5f56-936e-4937-b72e-f7c8826f8311" />
 
+  <img width="1139" height="639" alt="image" src="https://github.com/user-attachments/assets/b8b801e3-584b-4647-ae6e-59c2a6709d37" />
+
+  <img width="1136" height="626" alt="image" src="https://github.com/user-attachments/assets/19dbf8a0-b305-45f1-a847-39e7184aecbc" />
+
+  <img width="1132" height="659" alt="image" src="https://github.com/user-attachments/assets/4f016e94-365f-4636-917f-91f9a554cb89" />
+
+
+
 
 **Static Route with Exit Interface:** `ip route <destination_network> <subnet_mask> <exit_interface>`
 
@@ -169,6 +177,9 @@ Example: Route to 192.168.2.0/24 via GigabitEthernet0/1 to next-hop 10.0.0.2
   - **Exit Interface**: Specifies the local outbound interface (e.g., port) to send the packet out. Bypasses ARP for the next-hop; directly uses the interface. Preferred for point-to-point links to avoid recursion.
   - **Both**: Combines them for explicit control (e.g., in multi-access networks); the interface must lead to the next-hop IP.
 
+    <img width="1139" height="642" alt="image" src="https://github.com/user-attachments/assets/ecb19481-2c3a-42e2-a8db-4ac98a94880e" />
+
+
 #### Default Route
 A **default route** (0.0.0.0/0) forwards all unmatched traffic to a gateway (e.g., internet router).
 
@@ -177,6 +188,9 @@ A **default route** (0.0.0.0/0) forwards all unmatched traffic to a gateway (e.g
 **Example:** `ip route 0.0.0.0 0.0.0.0 10.0.0.1`
 
 This sends all non-local traffic to the default gateway at 10.0.0.1.
+
+<img width="1133" height="639" alt="image" src="https://github.com/user-attachments/assets/22d26e7a-8871-46d4-b0f3-62ea820bab51" />
+
 
 ## References
 - IANA [List of IP Protocol Numbers](https://en.wikipedia.org/wiki/List_of_IP_protocol_numbers)
