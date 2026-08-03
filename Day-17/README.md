@@ -3,7 +3,7 @@
 > **Course:** Jeremy's IT Lab — *CCNA 200-301 Complete Course* (Free)
 > **Topic:** Trunk ports, 802.1Q VLAN tagging, the native VLAN, and Router on a Stick (ROAS)
 > **Video reference:** `Free CCNA | VLANs (Part 2) | Day 17` + `Day 17 Lab`
-> **Series:** Part 2 of 3 → follows [Day 16](../Day-16-VLANs-Part-1/README.md), continues in [Day 18](../Day-18-VLANs-Part-3/README.md)
+> **Series:** Part 2 of 3 → follows [Day 16](chakradharmannepalli/Day-16/README.md), continues in [Day 18](chakradharmannepalli/Day-18/README.md)
 
 ---
 
