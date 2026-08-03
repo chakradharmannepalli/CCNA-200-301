@@ -3,7 +3,7 @@
 > **Course:** Jeremy's IT Lab — *CCNA 200-301 Complete Course* (Free)
 > **Topic:** Broadcast domains, what a VLAN is, and how to configure VLANs + access ports
 > **Video reference:** `Free CCNA | VLANs (Part 1) | Day 16` + `Day 16 Lab`
-> **Series:** Part 1 of 3 → continues in [Day 17](../Day-17-VLANs-Part-2/README.md) and [Day 18](../Day-18-VLANs-Part-3/README.md)
+> **Series:** Part 1 of 3 → continues in [Day 17](https://github.com/chakradharmannepalli/CCNA-200-301/blob/main/Day-17/README.md) and [Day 18](https://github.com/chakradharmannepalli/CCNA-200-301/blob/main/Day-18/README.md)
 
 ---
 
